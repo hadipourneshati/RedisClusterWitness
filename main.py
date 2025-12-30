@@ -40,7 +40,8 @@ class RedisNode:
             async with Redis(
                     host=self.host,
                     port=self.port,
-                    timeout=5,
+                    socket_connect_timeout=5,
+                    socket_timeout=5,
                     decode_responses=True
             ) as r:
                 info = await r.info()
@@ -64,7 +65,8 @@ class RedisNode:
             async with Redis(
                     host=self.host,
                     port=self.port,
-                    timeout=5,
+                    socket_connect_timeout=5,
+                    socket_timeout=5,
                     decode_responses=True
             ) as r:
                 failover_result = await r.execute_command("CLUSTER FAILOVER TAKEOVER")
