@@ -127,12 +127,6 @@ if __name__ == '__main__':
     GOTIFY = config.getboolean(section='Notification', option='gotify', fallback=False)
     GOTIFY_URI = config.get(section='Notification', option='gotify_uri')
     LOG_PATH = os.path.join(BASE_DIR, 'RedisClusterWitness.log')
-    logging.basicConfig(
-        filename=LOG_PATH,
-        filemode='a',
-        level=logging.INFO,
-        format='%(asctime)s\t%(levelname)s\t%(message)s',
-        datefmt='%Y-%m-%d %H:%M:%S'
-    )
-    logger = tools.get_logger('RedisClusterWitness')
+    LOG_LEVEL = logging.DEBUG if DEBUG else logging.INFO
+    logger = tools.get_logger(name='RedisClusterWitness', log_path=LOG_PATH, level=LOG_LEVEL)
     asyncio.run(main())
