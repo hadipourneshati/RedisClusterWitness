@@ -70,7 +70,6 @@ class RedisNode:
                     decode_responses=True
             ) as r:
                 failover_result = await r.execute_command("CLUSTER FAILOVER TAKEOVER")
-                failover_result = failover_result.decode('utf-8')
                 if failover_result == 'OK':
                     return True
                 else:

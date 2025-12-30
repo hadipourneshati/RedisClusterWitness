@@ -8,7 +8,7 @@ def get_logger(name: str, log_path: str, level: int = logging.INFO) -> Logger:
         return logger
     logger.setLevel(level)
     formatter = logging.Formatter(
-        fmt='%(asctime)s\t%(levelname)s\t%(message)s',
+        fmt='%(asctime)s\t%(levelname)s\t%(module)s\t%(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
     file_handler = logging.FileHandler(filename=log_path, mode='a', encoding='utf-8')
