@@ -1,10 +1,10 @@
-from tools.logger import get_logger
+import logging
 import aiohttp
 import ipaddress
 from dataclasses import dataclass
 
 
-logger = get_logger(__name__)
+logger = logging.getLogger('RedisClusterWitness')
 
 
 @dataclass
